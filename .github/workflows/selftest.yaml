@@ -1,6 +1,9 @@
 name: Self-test
 
 on:
+  workflow_run:
+    workflows: [Build]
+
   workflow_dispatch:
     inputs:
       test:
@@ -13,5 +16,5 @@ jobs:
     name: Wait
     runs-on: ubuntu-latest
     steps:
-    - name: Do nothing
-      run: sleep 30
+      - name: Do nothing
+        run: sleep 30
