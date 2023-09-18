@@ -51,3 +51,15 @@ jobs:
           trigger_workflow: true
           wait_workflow: true
           propagate_failure: true
+
+      - name: "Get PR number"
+        id: get-pr-number
+        uses: actions/checkout@v1
+      # Find the PR associated with this push, if there is one.
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        with:
+        # Can be "open", "closed", or "all".  Defaults to "open".
+          state: open
+      - run: echo "Your PR is ${PR}"    
+        
